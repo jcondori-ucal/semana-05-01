@@ -42,6 +42,4 @@ npm run traza    # imprime por qué capas pasa cada solicitud
 
 **Reglas nuevas (en el servicio):** `precio > 0` y `stock >= 0` → 400.
 
-## Postman
-Carpetas 1 y 2 = colección de la Semana 4 sin cambios (14 tests). Carpeta 3 = reglas nuevas (3 tests).
-Reinicia el servidor antes de ejecutar el Runner.
+ 
