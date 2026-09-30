@@ -1,0 +1,73 @@
+### Requests de prueba (VS Code: extensión REST Client, o copiarlos a Postman / Thunder Client)
+@base = http://localhost:3000/api
+
+### ---------- USERS ----------
+GET {{base}}/users
+
+###
+GET {{base}}/users/1
+
+###
+POST {{base}}/users
+Content-Type: application/json
+
+{ "name": "María Pérez", "email": "maria@mail.com", "age": 20 }
+
+###
+PUT {{base}}/users/1
+Content-Type: application/json
+
+{ "age": 23 }
+
+###
+DELETE {{base}}/users/2
+
+### ---------- ORDERS ----------
+GET {{base}}/orders
+
+###
+GET {{base}}/orders?userId=1
+
+###
+POST {{base}}/orders
+Content-Type: application/json
+
+{ "userId": 1, "product": "Teclado", "quantity": 2, "unitPrice": 120 }
+
+###
+PUT {{base}}/orders/1
+Content-Type: application/json
+
+{ "status": "PAGADA" }
+
+###
+DELETE {{base}}/orders/2
+
+### ---------- ERRORES CONTROLADOS ----------
+# 400: email inválido
+POST {{base}}/users
+Content-Type: application/json
+
+{ "name": "X", "email": "no-es-email" }
+
+###
+# 409: email duplicado
+POST {{base}}/users
+Content-Type: application/json
+
+{ "name": "Ana Bis", "email": "ana@mail.com" }
+
+###
+# 404: usuario inexistente al crear orden
+POST {{base}}/orders
+Content-Type: application/json
+
+{ "userId": 999, "product": "Monitor", "quantity": 1, "unitPrice": 800 }
+
+###
+# 400: id no numérico
+GET {{base}}/users/abc
+
+###
+# 404: ruta no definida
+GET {{base}}/productos
